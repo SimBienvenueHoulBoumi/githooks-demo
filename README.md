@@ -5,8 +5,21 @@ Projet de démonstration de [repogarde](https://github.com/SimBienvenueHoulBoumi
 | Fichier | Rôle |
 |---|---|
 | `lefthook.yml` | hooks locaux : règles repogarde à version figée |
-| `.github/workflows/repogarde.yml` | CI : action `SimBienvenueHoulBoumi/repogarde@v1`, mode strict |
+| `.github/workflows/repogarde.yml` | CI : action `SimBienvenueHoulBoumi/repogarde@v2`, mode strict |
 | `.repogarde.conf` | réglages partagés (exemples commentés) |
+
+## Essayer
+
+```bash
+git clone https://github.com/SimBienvenueHoulBoumi/repogarde-demo && cd repogarde-demo
+lefthook install          # hooks du projet (ou ./install.sh --global de repogarde : délégation automatique)
+git switch -c feat/division
+# … modifier src/calc/__init__.py, puis :
+git commit -am "division"  # préfixé en « feat(division): division », code formaté par ruff
+git push -u origin feat/division   # tests (pytest) avant l'envoi
+```
+
+Sans les hooks, la CI refait les mêmes vérifications et bloque la PR.
 
 ## Technologies prises en charge par repogarde
 
@@ -19,7 +32,7 @@ Ce projet est en Python, mais la même configuration fonctionne pour :
 | **Python** | pip, uv, poetry, pipenv — Django, FastAPI, Flask |
 | **Autres langages** | Go · Rust · PHP (Laravel, Symfony) · Ruby (Rails) · .NET · Dart / Flutter · Swift · Elixir · C / C++ · Shell |
 | **Infrastructure** | Terraform / OpenTofu · Packer · Ansible · Helm · Kubernetes · Docker · GitHub Actions |
-| **Hébergement / CI** | GitHub, GitLab, Bitbucket · GitHub Actions, GitLab CI |
+| **Hébergement / CI** | Hooks : tout dépôt Git · CI : GitHub Actions, GitLab CI |
 | **Systèmes** | Linux, macOS, Windows |
 
 Détails (formateurs, commandes de test) : [repogarde — Technologies](https://simbienvenuehoulboumi.github.io/repogarde/technologies/).

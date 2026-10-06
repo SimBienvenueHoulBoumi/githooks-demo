@@ -1,9 +1,11 @@
-# Vérifications githooks en CI (obligatoires pour merger : à déclarer en
+# Vérifications repogarde en CI (obligatoires pour merger : à déclarer en
 # "required status check" dans les règles de protection de la branche).
-name: githooks
+name: repogarde
 
 on:
   pull_request:
+    # edited : revérifie quand le titre de la PR change (message du commit en squash)
+    types: [opened, synchronize, reopened, edited]
   push:
     branches: [main]
 
@@ -11,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  githooks:
+  repogarde:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,6 +33,6 @@ jobs:
       #   with: { node-version: lts/*, cache: npm }
       # - run: npm ci
 
-      - uses: SimBienvenueHoulBoumi/githooks@v1 # x-release-please-major
+      - uses: SimBienvenueHoulBoumi/repogarde@v2 # x-release-please-major
         with:
           strict: true

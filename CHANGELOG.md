@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/compare/v0.1.0...v0.1.1) (2026-10-07)
+
+
+### Documentation
+
+* **readme:** le projet décrit, version anglaise ([#11](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/issues/11)) ([d37e4b4](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/commit/d37e4b4aeb6dbffe4675049dca3b822d826498ca))
+
 ## 0.1.0 (2026-10-06)
 
 

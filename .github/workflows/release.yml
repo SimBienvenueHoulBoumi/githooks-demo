@@ -21,7 +21,7 @@ permissions: {}
 
 jobs:
   release:
-    uses: SimBienvenueHoulBoumi/repogarde/.github/workflows/release-auto.yml@feat/release-reutilisable # essai avant release
+    uses: SimBienvenueHoulBoumi/repogarde/.github/workflows/release-auto.yml@v2
     permissions:
       contents: write
       pull-requests: write

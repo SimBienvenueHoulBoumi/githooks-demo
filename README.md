@@ -5,7 +5,8 @@ Projet de démonstration de [repogarde](https://github.com/SimBienvenueHoulBoumi
 | Fichier | Rôle |
 |---|---|
 | `lefthook.yml` | hooks locaux : règles repogarde à version figée |
-| `.github/workflows/repogarde.yml` | CI : action `SimBienvenueHoulBoumi/repogarde@v2`, mode strict |
+| `.github/workflows/repogarde.yml` | CI : action `SimBienvenueHoulBoumi/repogarde@v2`, mode strict : messages, branche, secrets, formatage (ruff), tests (pytest), nouveau code mort (ruff, vulture) |
+| `.github/workflows/release.yml` | releases automatiques : version calculée depuis les commits, PR de release validée par la CI puis mergée, tag et release |
 | `.repogarde.conf` | réglages partagés (exemples commentés) |
 
 ## Essayer
@@ -15,7 +16,8 @@ git clone https://github.com/SimBienvenueHoulBoumi/repogarde-demo && cd repogard
 lefthook install          # hooks du projet (ou ./install.sh --global de repogarde : délégation automatique)
 git switch -c feat/division
 # … modifier src/calc/__init__.py, puis :
-git commit -am "division"  # préfixé en « feat(division): division », code formaté par ruff
+git add . && git cc                # assistant de commit (installé par repogarde/install.sh)
+# ou : git commit -am "division" → préfixé en « feat(division): division », code formaté par ruff
 git push -u origin feat/division   # tests (pytest) avant l'envoi
 ```
 

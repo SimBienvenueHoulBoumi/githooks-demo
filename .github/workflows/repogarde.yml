@@ -26,7 +26,8 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
-      - run: pip install ruff==0.16.10 pytest==9.1.1
+      # ruff : formatage et code mort prouvé ; vulture : code mort ; pytest : tests
+      - run: pip install ruff==0.16.10 vulture==2.16 pytest==9.1.1
 
       # Autres exemples :
       # - uses: actions/setup-java@v4

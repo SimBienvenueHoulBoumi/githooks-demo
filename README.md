@@ -1,13 +1,34 @@
 # repogarde-demo
 
-Projet de démonstration de [repogarde](https://github.com/SimBienvenueHoulBoumi/repogarde), configuré **uniquement avec les modèles publiés** (`templates/project/`) :
+🇫🇷 Français · [🇬🇧 English](README.en.md)
+
+Projet de démonstration de [repogarde](https://github.com/SimBienvenueHoulBoumi/repogarde) : une petite application Python dont tout le cycle de vie (commits, branches, formatage, tests, code mort, releases) est encadré par repogarde, configuré **uniquement avec les modèles publiés** (`templates/project/`).
+
+## Le projet
+
+`calc` est une bibliothèque Python minimale, volontairement simple pour que l'attention reste sur l'outillage :
+
+```text
+src/calc/__init__.py    add(a, b) et mul(a, b)
+tests/test_calc.py      tests pytest
+pyproject.toml          projet Python (version tenue à jour par les releases)
+CHANGELOG.md            généré à chaque release
+```
+
+```bash
+pip install pytest && pytest -q     # lancer les tests (pythonpath réglé dans pyproject.toml)
+```
+
+Les versions sont publiées automatiquement : [releases](https://github.com/SimBienvenueHoulBoumi/repogarde-demo/releases).
+
+## Configuration repogarde
 
 | Fichier | Rôle |
 |---|---|
 | `lefthook.yml` | hooks locaux : règles repogarde à version figée |
 | `.github/workflows/repogarde.yml` | CI : action `SimBienvenueHoulBoumi/repogarde@v2`, mode strict : messages, branche, secrets, formatage (ruff), tests (pytest), nouveau code mort (ruff, vulture) |
 | `.github/workflows/release.yml` | releases automatiques : version calculée depuis les commits, PR de release validée par la CI puis mergée, tag et release |
-| `.repogarde.conf` | réglages partagés (exemples commentés) |
+| `.repogarde.conf` | réglages partagés : langue des messages de la CI (`lang = fr`), exemples commentés |
 
 ## Essayer
 

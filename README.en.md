@@ -25,19 +25,18 @@ Versions are published automatically: [releases](https://github.com/SimBienvenue
 
 | File | Role |
 |---|---|
-| `lefthook.yml` | local hooks: repogarde rules at a pinned version |
-| `.github/workflows/repogarde.yml` | CI: `SimBienvenueHoulBoumi/repogarde@v2` action, strict mode: messages, branch, secrets, formatting (ruff), tests (pytest), new dead code (ruff, vulture) |
+| `.github/workflows/repogarde.yml` | CI: `SimBienvenueHoulBoumi/repogarde@v3` action, strict mode: messages, branch, secrets, formatting (ruff), tests (pytest), new dead code (ruff, vulture) |
 | `.github/workflows/release.yml` | automatic releases: version computed from the commits, release PR validated by the CI then merged, tag and release |
-| `.repogarde.conf` | shared settings: CI message language (`lang = fr`), commented examples |
+| `.repogarde.conf` | shared settings: minimum repogarde version expected on developer machines (`version`), CI message language (`lang = fr`), commented examples |
 
 ## Try it
 
 ```bash
+npm install -g @simbie/repogarde && repogarde install --global   # once per machine
 git clone https://github.com/SimBienvenueHoulBoumi/repogarde-demo && cd repogarde-demo
-lefthook install          # project hooks (or repogarde's ./install.sh --global: automatic delegation)
 git switch -c feat/division
 # … edit src/calc/__init__.py, then:
-git add . && git cc                # commit assistant (installed by repogarde/install.sh)
+git add . && git cc                # commit assistant
 # or: git commit -am "division" → prefixed as "feat(division): division", code formatted by ruff
 git push -u origin feat/division   # tests (pytest) before sending
 ```

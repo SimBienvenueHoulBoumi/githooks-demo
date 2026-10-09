@@ -1,0 +1,20 @@
+# Suivi des tickets : chaque PR cite un ticket validé (« Ticket : #12 », ou
+# branche feat/12-sujet) ; statuts tenus à jour jusqu'à la production.
+name: tickets
+
+on:
+  pull_request_target:
+    types: [opened, reopened, edited, synchronize, ready_for_review, converted_to_draft, closed]
+  issues:
+    types: [opened, labeled]
+
+permissions: {}
+
+jobs:
+  tickets:
+    # Essai : branche de la PR repogarde #155, à repasser en @v3 après sa release
+    uses: SimBienvenueHoulBoumi/repogarde/.github/workflows/tickets.yml@feat/tickets
+    permissions: { issues: write, pull-requests: write, statuses: write }
+    with:
+      repogarde-ref: feat/tickets
+      integration-branch: main

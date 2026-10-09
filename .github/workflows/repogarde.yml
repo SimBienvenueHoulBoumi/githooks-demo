@@ -18,7 +18,7 @@ jobs:
   repogarde:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0 # historique complet : messages de commit, diff depuis la base
 
@@ -30,12 +30,12 @@ jobs:
       - run: pip install ruff==0.16.10 vulture==2.16 pytest==9.1.1
 
       # Autres exemples :
-      # - uses: actions/setup-java@v4
+      # - uses: actions/setup-java@v6
       #   with: { distribution: temurin, java-version: 21, cache: maven }
-      # - uses: actions/setup-node@v4
-      #   with: { node-version: lts/*, cache: npm }
+      # - uses: actions/setup-node@v7
+      #   with: { node-version: 24, cache: npm }
       # - run: npm ci
 
-      - uses: SimBienvenueHoulBoumi/repogarde@v2 # x-release-please-major
+      - uses: SimBienvenueHoulBoumi/repogarde@v3
         with:
           strict: true
